@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -26,42 +27,15 @@ public class MainActivity extends AppCompatActivity
         this.nameEditText = (EditText) findViewById(R.id.et_name);
         this.goButton = (Button) findViewById(R.id.btn_go);
 
-        this.nameEditText.addTextChangedListener(new TextWatcher()
-        {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after)
-            {
+        Toast.makeText(this, "This is a message!", Toast.LENGTH_SHORT).show();
+    }
 
-            }
+    public void onClickGo(View view)
+    {
+        // Grab text inside edittext
+        String name = nameEditText.getText().toString();
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count)
-            {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s)
-            {
-                // Grab text inside edittext
-                String name = s.toString();
-
-                // Set the name in the textview
-                helloTextView.setText("Hello " + name);
-            }
-        });
-
-        this.goButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                // Grab text inside edittext
-                String name = nameEditText.getText().toString();
-
-                // Set the name in the textview
-                helloTextView.setText("Hello " + name);
-            }
-        });
+        // Set the name in the textview
+        helloTextView.setText("Hello " + name);
     }
 }
